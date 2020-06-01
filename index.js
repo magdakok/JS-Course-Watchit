@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const chokidar = require('chokidar');
-let firstRun = true;
-if (firstRun) {
+const debounce = require('lodash.debounce');
+
     chokidar.watch('.')
     .on('add', (event, path)=>{
         console.log('file added ' + event)
@@ -13,7 +13,3 @@ if (firstRun) {
     .on('unlink', (event, path)=>{
         console.log('file unlinked ' + event)
     }); 
-
-    firstRun = false;
-}
-
